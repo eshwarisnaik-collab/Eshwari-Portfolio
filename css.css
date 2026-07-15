@@ -1,0 +1,573 @@
+/* ==========================================================================
+   1. GLOBAL STYLES & GLASS VARIABLE THEME
+   ========================================================================== */
+:root {
+    --neon-purple: #8a2be2;
+    --neon-cyan: #00f2fe;
+    --bg-main: #070913;          /* Ultra dark cyber background */
+    --glass-bg: rgba(255, 255, 255, 0.03); 
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover-border: rgba(0, 242, 254, 0.3);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+section {
+    padding: 100px 8%;
+    position: relative;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, var(--text-secondary));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   2. FIXED GLASS HEADER
+   ========================================================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(7, 9, 19, 0.75);
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+header .logo img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid var(--neon-cyan);
+}
+
+header .logo h2 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    position: relative;
+    padding: 5px 0;
+}
+
+nav ul li a:hover, 
+nav ul li a.active {
+    color: var(--neon-cyan);
+}
+
+/* Underline indicator for active class */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-cyan);
+    transition: var(--transition-smooth);
+}
+
+nav ul li a.active::after,
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   3. CYBER HERO SECTION
+   ========================================================================== */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+.hero-content {
+    flex: 1.2;
+}
+
+.hero-content .welcome {
+    color: var(--neon-cyan);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 span {
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.hero-content h3 {
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.hero-content .description {
+    max-width: 520px;
+    color: var(--text-secondary);
+    margin-bottom: 35px;
+}
+
+.hero-content .buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.hero-content button {
+    padding: 14px 32px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.hero-content .resume {
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+}
+
+.hero-content .resume:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
+}
+
+.hero-content .contact {
+    background: transparent;
+    color: #fff;
+    border: 1px solid var(--glass-border);
+}
+
+.hero-content .contact:hover {
+    background: var(--glass-bg);
+    border-color: var(--neon-cyan);
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+.image-glow-wrapper {
+    position: relative;
+}
+
+.image-glow-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+    border-radius: 24px;
+    filter: blur(25px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.hero-image img {
+    width: 300px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+}
+
+/* ==========================================================================
+   4. GLASSMORPHISM CARDS (ABOUT, SKILLS, PROJECTS, CERTIFICATES)
+   ========================================================================== */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.about-image img {
+    width: 240px;
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+}
+
+.about-content h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.about-content p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* Main Grid Template for Cards */
+.info-container, .skills-container, 
+.achievement-container, .projects-container, 
+.certificate-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.info-card, .skill-card, 
+.achievement-card, .project-card, 
+.certificate-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: var(--transition-smooth);
+}
+
+.info-card:hover, .skill-card:hover, 
+.achievement-card:hover, .project-card:hover, 
+.certificate-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--glass-hover-border);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.05);
+}
+
+.info-card h3, .skill-card h3, 
+.achievement-card h3, .project-card h3, 
+.certificate-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.info-card p, .skill-card p, 
+.achievement-card p, .project-card p, 
+.certificate-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Highlight specific structural definitions inside custom cards */
+.info-card h3 {
+    color: var(--neon-cyan);
+}
+
+/* ==========================================================================
+   5. MINIMALIST EDUCATION TABLE
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 20px;
+    text-align: left;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.02);
+    font-family: var(--font-heading);
+    color: var(--neon-cyan);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: var(--transition-smooth);
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ==========================================================================
+   6. EXPERIENCES TIMELINE STYLING
+   ========================================================================== */
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.experience-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 35px;
+    border-radius: 16px;
+    position: relative;
+}
+
+.experience-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-purple));
+    border-radius: 0 4px 4px 0;
+}
+
+.experience-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.experience-card .duration {
+    color: var(--neon-cyan);
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.experience-card ul {
+    list-style-position: inside;
+    color: var(--text-secondary);
+}
+
+.experience-card ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   7. CONTACT SYSTEM & ELEMENTS
+   ========================================================================== */
+.contact-container {
+    display: flex;
+    gap: 60px;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 18px;
+    color: var(--text-secondary);
+}
+
+.contact-info strong {
+    color: #fff;
+}
+
+.contact-form {
+    flex: 1.3;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    transition: var(--transition-smooth);
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.contact-form button {
+    padding: 16px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.contact-form button:hover {
+    background: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+}
+
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+/* ==========================================================================
+   8. SOCIAL BUTTONS & FOOTER
+   ========================================================================== */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    text-decoration: none;
+    padding: 14px 40px;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    border: 1px solid var(--glass-border);
+}
+
+.linkedin-btn {
+    background: rgba(0, 119, 181, 0.1);
+    color: #0077b5;
+    border-color: rgba(0, 119, 181, 0.3) !important;
+}
+
+.linkedin-btn:hover {
+    background: #0077b5;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 119, 181, 0.3);
+}
+
+.github-btn {
+    background: rgba(255, 255, 255, 0.02);
+    color: #fff;
+}
+
+.github-btn:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+footer {
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 1px solid var(--glass-border);
+    background: #04050b;
+}
+
+footer h2 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   9. RESPONSIVE DESIGN ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 968px) {
+    section { padding: 70px 5%; }
+    .hero { flex-direction: column-reverse; text-align: center; padding-top: 130px; }
+    .hero-content .buttons { justify-content: center; }
+    .about-container, .contact-container { flex-direction: column; padding: 25px; }
+    .hero-image img { width: 260px; height: 330px; }
+}
+
+@media (max-width: 600px) {
+    header { flex-direction: column; gap: 15px; }
+    nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+    .hero-content h1 { font-size: 2.8rem; }
+}
